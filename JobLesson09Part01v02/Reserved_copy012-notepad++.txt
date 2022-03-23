@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -56,11 +56,10 @@ namespace JobLesson09Part01v02
             CommandLine();
             string userCommandSring = Console.ReadLine();
             CommandFilesOfDIrView(userCommandSring);
-            CommandDirCopy(userCommandSring);
             CommandDirAddress(userCommandSring);
             CommandDirPartView(userCommandSring);
             Properties.Settings.Default.Save();
-            Quit(userCommandSring);
+            Qwit(userCommandSring);
 
         }
         static string TreeOfCategory(string structDirName)
@@ -177,7 +176,7 @@ namespace JobLesson09Part01v02
                 "Пример: delFile F:\\DocCopy.txt" + "\n" +
                 "7 - Информация о файле: info (выбранный файл)" + "\n" +
                 "Пример: info F:\\DocCopy.txt" + "\n" +
-                "8 - Для выхода из приложения введите - quit" + "\n" +
+                "8 - Для выхода из приложения введите - qwit" + "\n" +
                 "╔════════════════════════════════════════════════════════════════════════╗" + "\n" +
                 "║Введите команду:                                                        ║" + "\n" +
                 "╚════════════════════════════════════════════════════════════════════════╝") ;
@@ -316,58 +315,15 @@ namespace JobLesson09Part01v02
             }            
             return parseAddress;
         }
-        public static string CommandDirCopy(string userCommandSring)
+        
+        public static void Qwit(string userCommandSring)
         {
-
-            //Запрос копируемой директории и расположения копирования.   
-            string[] subs = userCommandSring.Split();
-
-            for (int i = 0; i < subs.Length; i++)
-            {
-                if (subs[0] == "copyD")
-                {
-                    if (Directory.Exists($@"{subs[1]}"))
-                    {
-                        Directory.CreateDirectory($@"{subs[2]}");
-                        if (Directory.Exists($@"{subs[2]}"))
-                        {
-                            Directory.CreateDirectory($@"{subs[2]}");
-                            Console.WriteLine("директрия в которую производиться копирование уже существует, всё равно выполнить копирование y - да или n - нет.");
-                            //if (Console.ReadLine()=="y")
-                            //{
-
-                            //}
-                            //if(Console.ReadLine()=="n")
-                            //{
-                            //    Console.WriteLine("введите команду ещё раз");
-                            //    return userCommandSring;
-                            //}
-                            //else
-                            //{
-                            //    Console.WriteLine("Вы ввели неверную команду, введите команду ещё раз");
-                            //    return userCommandSring;
-                            //}
-                        }
-
-                    }
-                    else
-                    {
-                        Console.WriteLine("Указана не существующая категория для копирования");
-                        return Console.ReadLine();                           
-                    }
-                }
-            }
-            return userCommandSring;
-        }
-
-        public static void Quit(string userCommandSring)
-        {
-            if(userCommandSring =="quit")
+            if(userCommandSring =="qwit")
             {
                 Environment.Exit(0);                
             }
         }
-                
+
         //public static void KeyCommant()
         //{
         //    ConsoleKeyInfo info = Console.ReadKey();
