@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -50,7 +50,6 @@ namespace JobLesson09Part01v02
         }
         static void StructureOfCommand()
         {
-            //создан метод отвечающий за функуионал файлового менеджера
             UserInformation();
             string userCommandString = Console.ReadLine();
             CommandFilesOfDIrView(userCommandString);
@@ -60,7 +59,6 @@ namespace JobLesson09Part01v02
             CommandDirPartView(userCommandString);
             Properties.Settings.Default.Save();
             Delete(userCommandString);
-            DeleteFile(userCommandString);
             Quit(userCommandString);
         }
         static string TreeOfCategory(string structDirName)
@@ -147,26 +145,25 @@ namespace JobLesson09Part01v02
         }
         public static void UserInformation()
         {
-            //метод с описанием функций файлового менеджера
             Console.WriteLine(
                 "Команды строки:" + "\n" +
                 "1 - Переход в категорию: dir (выбранная папка) -p (выбранная страница папок)" + "\n" +
                 $"Примечание: вывод производиться по {Properties.Settings.Default.SavedSizePageCategory} категорий." + "\n" +
                 "Примечание 2: если указана несущесвующая категория возвращает в C:\\." + "\n" +
                 "Примечание 3: если указана несущесвующая страница возвращает первую страницу." + "\n" +
-                "Пример: d C:\\Docs -p 1" + "\n" +
+                "Пример: dir C:\\Docs -p 1" + "\n" +
                 "2 - Отобразить страницу с файлами в текущей категории: dirF (выбранная страница файлов)" + "\n" +
                 $"Примечание: вывод производиться по {Properties.Settings.Default.SavedSizePageFiles} категорий)." + "\n" +
                 $"Примечание 2: если указана несущесвующая страница возвращает - 0." + "\n" +
-                "Пример: df 2" + "\n" +
+                "Пример: dirF 2" + "\n" +
                 "3 - Копирование папки: copyD (выбранная папка) (скопированная папка)" + "\n" +
-                "Пример: cd C:\\Directory F:\\DirectoryCopy" + "\n" +
+                "Пример: copyD C:\\Directory F:\\DirectoryCopy" + "\n" +
                 "4 - Копирование файла: copyF (выбранный файл) (скопированный файл)" + "\n" +
-                "Пример: cf C:\\Doc.txt F:\\DocCopy.txt" + "\n" +
+                "Пример: copyF C:\\Doc.txt F:\\DocCopy.txt" + "\n" +
                 "5 - Удаление каталога: delDir (выбранная папка)" + "\n" +
-                "Пример: rmd F:\\DirectoryCopy" + "\n" +
+                "Пример: delD F:\\DirectoryCopy" + "\n" +
                 "6 - Удаление файла: delFile (выбранный файл)" + "\n" +
-                "Пример: rmf F:\\DocCopy.txt" + "\n" +
+                "Пример: delF F:\\DocCopy.txt" + "\n" +
                 "7 - Информация о файле: info (выбранный файл)" + "\n" +
                 "Пример: info F:\\DocCopy.txt" + "\n" +
                 "8 - Для выхода из приложения введите - quit" + "\n" +
@@ -182,7 +179,7 @@ namespace JobLesson09Part01v02
             string parseAddress = @"C:\";
             for (int i =0; i<subs.Length;i++)
             {                
-                if (subs[0]=="d")
+                if (subs[0]=="dir")
                 {
                     parseAddress = subs[1];
                     try { parseAddress = subs[1]; }
@@ -220,7 +217,7 @@ namespace JobLesson09Part01v02
             string parseAddress = "";
             for (int i = 0; i < subs.Length; i++)
             {
-                if (subs[0] == "d")
+                if (subs[0] == "dir")
                 {
                     try { dirsAddress = Int32.Parse(subs[3]); }
                     catch
@@ -247,7 +244,7 @@ namespace JobLesson09Part01v02
             string parseAddress = "";
             for (int i = 0; i < subs.Length; i++)
             {
-                if (subs[0] == "df")
+                if (subs[0] == "dirF")
                 {
                     try { filesAddress = Int32.Parse(subs[1]); }
                     catch 
@@ -275,7 +272,7 @@ namespace JobLesson09Part01v02
 
             for (int i = 0; i < subs.Length; i++)
             {
-                if (subs[0] == "cd")
+                if (subs[0] == "copyD")
                 {
                     if (Directory.Exists($@"{subs[1]}"))
                     {
@@ -319,7 +316,7 @@ namespace JobLesson09Part01v02
 
             for (int i = 0; i < subs.Length; i++)
             {
-                if (subs[0] == "cf")
+                if (subs[0] == "copyF")
                 {
                     try { File.Copy($@"{subs[1]}", $@"{subs[1]}".Replace($@"{subs[1]}", $@"{subs[2]}"), true); }
                     catch { Exeptions(); }
@@ -333,7 +330,7 @@ namespace JobLesson09Part01v02
 
             for (int i = 0; i < subs.Length; i++)
             {
-                if (subs[0] == "rmd")
+                if (subs[0] == "delD")
                 {
                     try
                     {
@@ -341,18 +338,6 @@ namespace JobLesson09Part01v02
                         bool directoryExists = Directory.Exists(subs[1]);
                         Console.WriteLine("top-level directory exists: " + directoryExists);
                     }
-                    catch {Exeptions();}
-                }
-            }
-        }
-        public static void DeleteFile(string userCommandString)
-        {
-            string[] subs = userCommandString.Split();
-            for (int i = 0; i < subs.Length; i++)
-            {
-                if (subs[0] == "rmf")
-                {
-                    try {File.Delete($@"{subs[1]}");}
                     catch {Exeptions();}
                 }
             }

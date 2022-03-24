@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -50,7 +50,6 @@ namespace JobLesson09Part01v02
         }
         static void StructureOfCommand()
         {
-            //создан метод отвечающий за функуионал файлового менеджера
             UserInformation();
             string userCommandString = Console.ReadLine();
             CommandFilesOfDIrView(userCommandString);
@@ -147,7 +146,6 @@ namespace JobLesson09Part01v02
         }
         public static void UserInformation()
         {
-            //метод с описанием функций файлового менеджера
             Console.WriteLine(
                 "Команды строки:" + "\n" +
                 "1 - Переход в категорию: dir (выбранная папка) -p (выбранная страница папок)" + "\n" +
