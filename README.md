@@ -52,5 +52,5 @@ JobLesson09v02
 ## Описание программы
 
 ## Вставка изображения
-```
-![Alt-текст] (https://github.com/Safroniv/JobLesson09v02/blob/JobLesson09Part01v02/JobLesson09Part01v02/scr/proInWork.png "программа в работе")
+
+```[![Alt-текст] (https://github.com/Safroniv/JobLesson09v02/blob/JobLesson09Part01v02/JobLesson09Part01v02/scr/proInWork.png "программа в работе")```  
