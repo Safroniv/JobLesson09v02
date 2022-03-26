@@ -67,10 +67,13 @@ JobLesson09v02
 
 
 ## Общие характеристики
-Программа запускается в консоли.
-Имеет вид:
+Программа запускается в консоли и имеет вид:
 
-![Тут текст](https://github.com/Safroniv/JobLesson09v02/blob/JobLesson09Part01v02/JobLesson09Part01v02/scr/proInWork.png )
+![Вид консольного приложения](https://github.com/Safroniv/JobLesson09v02/blob/JobLesson09Part01v02/JobLesson09Part01v02/scr/proInWork.png )
 
+Программа сохраняет последние действия и при следующем запуске запускается последнее сохранённое состояние.
+Все параметры сохраняются в Propertice:
+![меню Propertice](https://github.com/Safroniv/JobLesson09v02/blob/JobLesson09Part01v02/JobLesson09Part01v02/scr/Porperties.png )
 
-
+Все команды отображаются после меню вывода на страницу менеджера и инструкции.
+![командная строка](https://github.com/Safroniv/JobLesson09v02/blob/JobLesson09Part01v02/JobLesson09Part01v02/scr/CommandLineinFileManeger.png)
