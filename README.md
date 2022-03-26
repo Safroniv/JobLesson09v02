@@ -73,7 +73,9 @@ JobLesson09v02
 
 Программа сохраняет последние действия и при следующем запуске запускается последнее сохранённое состояние.
 Все параметры сохраняются в Propertice:
+
 ![меню Propertice](https://github.com/Safroniv/JobLesson09v02/blob/JobLesson09Part01v02/JobLesson09Part01v02/scr/Porperties.png )
 
 Все команды отображаются после меню вывода на страницу менеджера и инструкции.
+
 ![командная строка](https://github.com/Safroniv/JobLesson09v02/blob/JobLesson09Part01v02/JobLesson09Part01v02/scr/CommandLineinFileManeger.png)
