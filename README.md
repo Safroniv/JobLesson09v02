@@ -70,7 +70,7 @@ JobLesson09v02
 Программа запускается в консоли.
 Имеет вид:
 
-[![Тут текст](https://github.com/Safroniv/JobLesson09v02/blob/JobLesson09Part01v02/JobLesson09Part01v02/scr/proInWork.png )]
+![Тут текст](https://github.com/Safroniv/JobLesson09v02/blob/JobLesson09Part01v02/JobLesson09Part01v02/scr/proInWork.png )
 
 
 
