@@ -33,9 +33,6 @@ namespace JobLesson09Part01v02
             {
                 Console.Clear(); 
                 string structDirName = $@"C:\";
-                //string infoManual = "";
-                //string userCommandSring = "";
-                //string parseAddress = "";
                 if (Properties.Settings.Default.SavedAddress == structDirName)
                 {
                     TreeOfCategory(structDirName);
@@ -59,8 +56,7 @@ namespace JobLesson09Part01v02
             CommandDirAddress(userCommandString);
             CommandDirPartView(userCommandString);
             Properties.Settings.Default.Save();
-            Delete(userCommandString);
-            DeleteFile(userCommandString);
+            Delete(userCommandString);            
             Quit(userCommandString);
         }
         static string TreeOfCategory(string structDirName)
@@ -250,8 +246,9 @@ namespace JobLesson09Part01v02
                     try { filesAddress = Int32.Parse(subs[1]); }
                     catch 
                     {
-                        Exeptions();
                         Console.WriteLine("Неверная команда");
+                        Exeptions();
+                        
                         break;
                     }
                     finally
@@ -328,30 +325,22 @@ namespace JobLesson09Part01v02
         public static void Delete(string userCommandString)
         {
             string[] subs = userCommandString.Split();
-
             for (int i = 0; i < subs.Length; i++)
-            {
+            {  
                 if (subs[0] == "rmd")
                 {
                     try
                     {
                         Directory.Delete(subs[1], true);
                         bool directoryExists = Directory.Exists(subs[1]);
-                        Console.WriteLine("top-level directory exists: " + directoryExists);
+                        Console.WriteLine(directoryExists);
                     }
-                    catch {Exeptions();}
+                    catch { Exeptions(); }
                 }
-            }
-        }
-        public static void DeleteFile(string userCommandString)
-        {
-            string[] subs = userCommandString.Split();
-            for (int i = 0; i < subs.Length; i++)
-            {
                 if (subs[0] == "rmf")
                 {
-                    try {File.Delete($@"{subs[1]}");}
-                    catch {Exeptions();}
+                    try { File.Delete($@"{subs[1]}"); }
+                    catch { Exeptions(); }
                 }
             }
         }
@@ -364,6 +353,7 @@ namespace JobLesson09Part01v02
             try { }
             catch (Exception ex)
             {
+                Console.WriteLine("Ошибочная команда! Введите еще раз.");
                 if (Directory.Exists(@"C:\errors"))
                 { File.AppendAllText(@"C:\errors\random_name_exception.txt", $"{DateTime.Now} {ex.Message}\n"); }
                 else
