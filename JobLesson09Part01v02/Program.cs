@@ -16,20 +16,20 @@ namespace JobLesson09Part01v02
             }
         }
         public static string[] CommandParser(params string[] massiveCommands)
-        {           
+        {
             //Парсер строки введенной пользователем
             string stringParser = Console.ReadLine();
             bool keyIndex = true;
             for (int i = 0; i < stringParser.Length; i++)
-            {                
+            {
                 if (i < 2)
-                {massiveCommands[0] += stringParser[i];}
+                { massiveCommands[0] += stringParser[i]; }
                 if (stringParser[i] == ' ' && stringParser[i + 1] == '?')
-                {keyIndex = !keyIndex;i+=3;}
-                if (i > 2&& keyIndex)
-                { massiveCommands[1] += stringParser[i];}
+                { keyIndex = !keyIndex; i += 3; }
+                if (i > 2 && keyIndex)
+                { massiveCommands[1] += stringParser[i]; }
                 if (i > 2 && !keyIndex)
-                { massiveCommands[2] += stringParser[i];}
+                { massiveCommands[2] += stringParser[i]; }
             }
             return massiveCommands;
         }
@@ -49,10 +49,10 @@ namespace JobLesson09Part01v02
                 case "vd": { CommandDirAddress(address, addressCreate); } break;
                 case "vf": { CommandFilesOfDIrView(address); } break;
                 case "cd": { CopyDirs(address, addressCreate); } break;
-                case "cf": { CopyFiles(address, addressCreate); } break;               
+                case "cf": { CopyFiles(address, addressCreate); } break;
                 case "rm": { Delete(address); } break;
                 case "ex": { Environment.Exit(0); } break;
-                default:   { Console.WriteLine("Введена неверная команда"); } break;
+                default: { Console.WriteLine("Введена неверная команда"); } break;
             }
         }
         static string TreeOfCategory(string structDirName)
@@ -70,7 +70,6 @@ namespace JobLesson09Part01v02
                     Directory.CreateDirectory(@"C:\errors");
                     File.AppendAllText(@"C:\errors\random_name_exception.txt", $"{DateTime.Now} {ex.Message}\n");
                 }
-
                 structDirName = $@"C:\";
                 ConsoleColor current = Console.BackgroundColor;
                 Console.BackgroundColor = ConsoleColor.DarkRed;
@@ -100,10 +99,7 @@ namespace JobLesson09Part01v02
                     int LastElementView = FirstElementView + numElementsPage;
                     for (int i = FirstElementView; i < LastElementView; i++)
                     {
-                        if (dirs.Length <= i)
-                        {
-                            break;
-                        }
+                        if (dirs.Length <= i) { break; }
                         DirectoryInfo dirsInfo = new DirectoryInfo(dirs[i]);
                         Console.WriteLine(
                             "║├" + dirsInfo.Name + " │ " + dirsInfo.Exists + " │ " + dirsInfo.Attributes + " │ " + dirsInfo.CreationTime + " │ ");
@@ -145,7 +141,7 @@ namespace JobLesson09Part01v02
         }
         public static void UserInformation()
         {
-            //метод с описанием функций файлового менеджера
+            //Метод с описанием функций файлового менеджера.
             Console.WriteLine(
                 "Команды строки:" + "\n" +
                 "1 - Переход в категорию: d (выбранная папка) -p (выбранная страница папок)" + "\n" +
@@ -218,7 +214,6 @@ namespace JobLesson09Part01v02
             }
             finally
             {
-
                 if (dirsAddress <= 0 || dirsAddress > (Directory.GetFiles(Properties.Settings.Default.SavedAddress).Length / Properties.Settings.Default.SavedSizePageFiles + 1)) { dirsAddress = 0; }
                 Properties.Settings.Default.SavedNumPageCat = dirsAddress;
                 Properties.Settings.Default.Save();

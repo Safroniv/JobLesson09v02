@@ -37,7 +37,7 @@ namespace JobLesson09Part01v02.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9")]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
         public int SavedSizePageCategory {
             get {
                 return ((int)(this["SavedSizePageCategory"]));
@@ -46,7 +46,7 @@ namespace JobLesson09Part01v02.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9")]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
         public int SavedSizePageFiles {
             get {
                 return ((int)(this["SavedSizePageFiles"]));
