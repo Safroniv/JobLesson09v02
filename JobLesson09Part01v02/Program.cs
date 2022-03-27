@@ -7,7 +7,6 @@ namespace JobLesson09Part01v02
     {
         static void Main()
         {
-
             //Основной медот который определяет есть ли сохранённые данные Properties
             while (true)
             {
@@ -17,7 +16,8 @@ namespace JobLesson09Part01v02
             }
         }
         public static string[] CommandParser(params string[] massiveCommands)
-        {            
+        {           
+            //Парсер строки введенной пользователем
             string stringParser = Console.ReadLine();
             bool keyIndex = true;
             for (int i = 0; i < stringParser.Length; i++)
@@ -35,7 +35,7 @@ namespace JobLesson09Part01v02
         }
         static void StructureOfCommand()
         {
-            //создан метод отвечающий за функуионал файлового менеджера
+            //метод отвечающий за функционал файлового менеджера
             string command = "";
             string address = "";
             string addressCreate = "";
@@ -52,7 +52,7 @@ namespace JobLesson09Part01v02
                 case "cf": { CopyFiles(address, addressCreate); } break;               
                 case "rm": { Delete(address); } break;
                 case "ex": { Environment.Exit(0); } break;
-                default: { Console.WriteLine("Введена неверная команда"); } break;
+                default:   { Console.WriteLine("Введена неверная команда"); } break;
             }
         }
         static string TreeOfCategory(string structDirName)
@@ -173,7 +173,7 @@ namespace JobLesson09Part01v02
 
         public static void CommandDirAddress(string address, string pagecat)
         {
-            //Запрос адреса и сохранение адреса в свойства пользователя.
+            //Запрос адреса, сохранение адреса в свойства пользователя с последующим выводом страницы категории с условием пейджинга
             string parseAddress = @"C:\";
             int dirsAddress = 0;
 
@@ -203,7 +203,7 @@ namespace JobLesson09Part01v02
                     Properties.Settings.Default.Save();
                 }
             }
-            //Запрос страницы вывода категорий и сохранение страницы вывода в свойства пользователя.  
+            //Запрос страницы вывода категорий (пейджинг) и сохранение страницы вывода в свойства пользователя.  
             try { dirsAddress = Int32.Parse(pagecat); }
             catch (Exception ex)
             {
@@ -226,7 +226,7 @@ namespace JobLesson09Part01v02
         }
         public static void CommandFilesOfDIrView(string address)
         {
-            //Запрос страницы вывода файлов и сохранение страницы вывода в свойства пользователя.   
+            //Запрос страницы вывода файлов (пейджинг) и сохранение страницы вывода в свойства пользователя.   
             int filesAddress = 0;
 
             try { filesAddress = Int32.Parse(address); }
@@ -300,7 +300,7 @@ namespace JobLesson09Part01v02
         }
         public static void CopyFiles(string address, string addressCreate)
         {
-            //копирование отдельных фалов
+            //копирование отдельных файлов
             try { File.Copy($@"{address}", $@"{address}".Replace($@"{address}", $@"{addressCreate}"), true); }
             catch (Exception ex)
             {
@@ -336,7 +336,7 @@ namespace JobLesson09Part01v02
                     }
                 }
             }
-            //удаление фалов
+            //удаление файлов
             if (File.Exists(address))
             {
                 try { File.Delete($@"{address}"); }
